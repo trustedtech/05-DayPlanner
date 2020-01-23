@@ -44,7 +44,7 @@ textarea{
 
 .row {
   white-space: pre-wrap;
-  height: 50px;
+  height: 60px;
   border-top: 1px solid white;
   margin: 0 5%;
 }
@@ -59,17 +59,17 @@ textarea{
 
 .past {
   background-color:#e5eaef;
-  color: gray;
+  color: #b5b5b5;
 }
 
 .present {
   background-color: #fffbc9;
-  color: black;
+  color: #881900;
 }
 
 .future {
-  background-color: #e5ffc9;
-  color: black;
+  background-color: #e9faff;
+  color: #0049b7;
 }
 
 .saveBtn {

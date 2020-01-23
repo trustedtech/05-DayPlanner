@@ -1,25 +1,43 @@
 //Captures the current moment and extracts global references for later comparison
 var currentMoment = moment();
-var currentDateTime = currentMoment.format("YYYY-MM-DDTHH:mm:ss");
+var currentDate = currentMoment.format("YYYY-MM-DD");
+//var currentDateTime = currentMoment.format("YYYY-MM-DDTHH:mm:ss");
 var currentDateHour = currentMoment.format("YYYY-MM-DDTHH");
-console.log(currentDateTime);
+currentDateHour = "2020-01-22T13";
 console.log(currentDateHour);
 
 //Displays current day on the page
 $('#currentDay').text(currentMoment.format("dddd, MMMM Do"));
 
-//Builds the timeMap object to facilitate dynamic behaviors 
-var workHours = ["9AM","10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
-var timeMap = {};
+//Collects all timeslots into an array
+var timeslots = $('div');
 
-workHours.forEach(function(hour){
-var hourMark = currentMoment.clone().
-//slotmap.hour = 0;
+//Colors the timeslots in relation to the current time
+paintSlots();
 
-})
 
-//
-function createTimeslots() {
-    var slot = $('<div></div>');
 
+
+
+function paintSlots() {
+
+    $(timeslots).each(function(slot){
+        var field = $(this).children('textarea');
+        var hour = currentDate + "T" + $(field).attr('data-hour');
+        console.log(hour + " ~~~ " + currentDateHour);
+
+        if ( moment(hour) < moment(currentDateHour) ) {
+            $(field).addClass("past");
+        } 
+        else 
+        if ( moment(hour).isSame(moment(currentDateHour)) ) {
+            $(field).addClass("present");
+        } 
+        else
+        if ( moment(hour) > moment(currentDateHour) ) {
+            $(field).addClass("future");
+        }
+
+    })
+    
 }
