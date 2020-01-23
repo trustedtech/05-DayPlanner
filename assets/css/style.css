@@ -34,7 +34,7 @@ textarea{
 
 .description{
   white-space: pre-wrap;
-  width: 80%;
+  width: 75%;
 }
 
 .time-block{
@@ -53,8 +53,9 @@ textarea{
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
-  padding: 10px 15px;
+  padding: 10px 15px 0 0;
   width: 10%;
+  min-width: 55px;
 }
 
 .past {
@@ -72,20 +73,34 @@ textarea{
   color: #0049b7;
 }
 
-.saveBtn {
+.saveBtn, .clearBtn {
+  display: inline-block;
   border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #2586d9;
-  color: whitesmoke;
+  color: #dcdcdc;
   font-size:1.2em;
   padding: 15px;
   min-width: 55px;
 }
 
-.saveBtn i:hover {
+.saveBtn {
+  background-color: #2586d9;
+}
+
+.clearBtn {
+  background-color: #d55656;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.saveBtn i:hover, .clearBtn i:hover {
   font-size: 1.3em;
-  transition: all .3s ease-in-out;
+  transition: all .2s ease-in-out;
   color: white;
 }
 
+@media only screen and (max-width: 992px) {
+  .description{
+    white-space: pre-wrap;
+    width: 65%;
+  }
+}
