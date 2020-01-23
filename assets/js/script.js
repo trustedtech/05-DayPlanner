@@ -1,11 +1,11 @@
-//Captures the current moment and extracts global references for later comparison
+//Captures the current moment and extracts date parts for global reference
 var currentMoment = moment();
 var currentDate = currentMoment.format("YYYY-MM-DD");
 var currentDateHour = currentMoment.format("YYYY-MM-DDTHH");
 console.log("Operating Timestamp: " + currentDateHour);
 console.log("To verify that the timeslots change color in relation to the current time, set currentDateHour = currentDate + 'T13', then run paintSlots().");
 
-//Displays current day on the page
+//Displays current date atop the schedule
 $('#currentDay').text(currentMoment.format("dddd, MMMM Do"));
 
 //Loads saved entries from local storage
@@ -18,14 +18,18 @@ if ( entries !== null ) {
 
         if ( value !== "" ) {
             console.log("Restored: " + key + "PM -> " + value);      
-}}}
+        }
+    }
+}
 else {
+    //We must declare the object so we can work with it later
     entries = {9: "", 10: "", 11: "", 12: "", 1: "", 2: "", 3: "", 4: "", 5: ""};
 }
 
 //Colors the timeslots in relation to the current time
 paintSlots();
 
+//Listens for and responds to all button clicks
 $('button').click(function(){
     if ($(this).hasClass("clearBtn")){
         $(this).siblings('textarea').val("");
@@ -42,7 +46,6 @@ $('button').click(function(){
         localStorage.setItem("entriesDB", JSON.stringify(entries));
         console.log(slot + "PM -> " + entry);
     }
-
 })
 
 
@@ -67,7 +70,5 @@ function paintSlots() {
         if ( moment(hour) > moment(currentDateHour) ) {
             $(field).addClass("future");
         }
-
     })
-    
 }
